@@ -1,0 +1,230 @@
+
+import replit
+
+from getkey import getkey, keys
+
+
+def register_customer(first_name, surname, email, phone, customers):
+  replit.clear()
+  print("\nPlease enter the following information.")
+
+  # Ask for customers first name
+  first_name = input("Enter first name: ")
+
+  # Ask for customers surname
+  surname = input("Enter surname: ")
+
+  # Ask for customers email address
+  email = input("Enter email address: ")
+
+  # Ask for customers phone number
+  phone = input("Enter phone number: ")
+
+  # Create a dictionary to store the user's information
+  customer = {
+    "first_name": first_name,
+    "surname": surname,
+    "email": email,
+    "phone": phone
+  }
+
+  # Add the customer to the list of customers
+  customers.append(customer)
+
+  # Prompt the user to choose an option from the menu
+
+  menuOptions0 = [
+    "Add another customer\t\t", "Delete customer\t\t\t\t",
+    "Show list of all customers\t", "Return to main menu\t\t\t"
+  ]
+  menuSelected0 = 0
+
+  while True:
+    replit.clear()
+    print("\nPlease choose an option:")
+
+    # Use an if/else statement to determine which option is selected
+    if menuSelected0 == 0:
+      print(menuOptions0[0] + "<--")
+      print(menuOptions0[1])
+      print(menuOptions0[2])
+      print(menuOptions0[3])
+    elif menuSelected0 == 1:
+      print(menuOptions0[0])
+      print(menuOptions0[1] + "<--")
+      print(menuOptions0[2])
+      print(menuOptions0[3])
+    elif menuSelected0 == 2:
+      print(menuOptions0[0])
+      print(menuOptions0[1])
+      print(menuOptions0[2] + "<--")
+      print(menuOptions0[3])
+    elif menuSelected0 == 3:
+      print(menuOptions0[0])
+      print(menuOptions0[1])
+      print(menuOptions0[2])
+      print(menuOptions0[3] + "<--")
+
+    key_pressed = getkey()
+    if key_pressed == keys.DOWN and menuSelected0 + 1 != len(menuOptions0):
+      menuSelected0 += 1
+    elif key_pressed == keys.UP and not (menuSelected0 == 0):
+      menuSelected0 -= 1
+    elif key_pressed == keys.ENTER:
+      # Use the selected menu option to determine which action to take
+      if menuSelected0 == 0:
+        register_customer(first_name, surname, email, phone, customers)
+      elif menuSelected0 == 1:
+        deleteCustomer(customers)
+      elif menuSelected0 == 2:
+        show_customers(customers)
+      elif menuSelected0 == 3:
+        break
+
+
+customers = []
+
+
+def register_car(manufacturer, model, year, mileage, cars):
+  print("\nPlease enter the following information.")
+
+  # Ask the user for their name
+  manufacturer = input("Enter manufacturer: ")
+
+  # Ask the user for their email address
+  model = input("Enter model: ")
+
+  # Ask the user for their phone number
+  year = input("Enter year of build: ")
+
+  # Ask the user for their phone number
+  mileage = input("Enter mileage: ")
+
+  # Create a dictionary to store the user's information
+  car = {
+    "manufacturer": manufacturer,
+    "model": model,
+    "year": year,
+    "mileage": mileage
+  }
+
+  # Add the customer to the list of customers
+  cars.append(car)
+
+  input("Press Enter to continue...")
+
+
+cars = []
+
+
+def services():
+  replit.clear()
+  print("You selected services, press enter to continue")
+  input()
+  pass
+
+
+def manage_staff():
+  replit.clear()
+  print("You selected services, press enter to continue")
+  input()
+  pass
+
+
+def EndProgram():
+  replit.clear()
+  print("\nAvslutar programmet!")
+  input("Press Enter to continue...")
+  replit.clear()
+  exit()
+
+
+
+def show_customers(customers):
+  replit.clear()
+  # Use a for loop to iterate over the list of customers
+  for customer in customers:
+    # Print the customer's information
+    print(f"Name: {customer['first_name']} {customer['surname']}")
+    print(f"Email: {customer['email']}")
+    print(f"Phone: {customer['phone']}")
+
+    input("Please press enter to continue....")
+
+
+# Define the deleteCustomer function
+def deleteCustomer(customers):
+  # Prompt the user for the customer's name
+  name = input("Enter the customer's name: ")
+
+  # Use a for loop to iterate over the list of customers
+  for customer in customers:
+    # Check if the customer's name matches the name the user entered
+    if customer["first_name"] + " " + customer["surname"] == name:
+      # If the customer's name matches, remove the customer from the list
+      customers.remove(customer)
+      break
+
+
+menuOptions = [
+  "Register new customer\t", "Register new car\t\t", "Services\t\t\t\t",
+  "Manage Staff\t\t\t", "Close Program\t\t\t"
+]
+menuSelected = 0
+
+while (True):
+  replit.clear()
+  print("\x1b[?25l")
+
+  if menuSelected == 0:
+    print(menuOptions[0] + "<--")
+    print(menuOptions[1])
+    print(menuOptions[2])
+    print(menuOptions[3])
+    print(menuOptions[4])
+  elif menuSelected == 1:
+    print(menuOptions[0])
+    print(menuOptions[1] + "<--")
+    print(menuOptions[2])
+    print(menuOptions[3])
+    print(menuOptions[4])
+  elif menuSelected == 2:
+    print(menuOptions[0])
+    print(menuOptions[1])
+    print(menuOptions[2] + "<--")
+    print(menuOptions[3])
+    print(menuOptions[4])
+  elif menuSelected == 3:
+    print(menuOptions[0])
+    print(menuOptions[1])
+    print(menuOptions[2])
+    print(menuOptions[3] + "<--")
+    print(menuOptions[4])
+  elif menuSelected == 4:
+    print(menuOptions[0])
+    print(menuOptions[1])
+    print(menuOptions[2])
+    print(menuOptions[3])
+    print(menuOptions[4] + "<--")
+  keyPressed = getkey()
+  if keyPressed == keys.DOWN and menuSelected + 1 != len(menuOptions):
+    menuSelected += 1
+  elif keyPressed == keys.UP and not (menuSelected == 0):
+    menuSelected -= 1
+  elif keyPressed == keys.ENTER:
+    if menuSelected == 0:
+      # Call the register_customer function when the user presses ENTER
+      register_customer("John", "Smith", "johnsmith@example.com", "070000000",
+                        customers)
+    elif menuSelected == 1:
+      register_car("Saab", "93", "2007", "100,000", cars)
+    elif menuSelected == 2:
+      services()
+    elif menuSelected == 3:
+      manage_staff()
+    elif menuSelected == 4:
+      EndProgram()
+      print("\x1b[?25h")
+      break
+
+
